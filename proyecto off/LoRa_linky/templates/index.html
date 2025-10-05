@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard de Emergencias LoRaLink</title>
+    <!-- links de Leaflet -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <!-- NUEVO: Estilos para el plugin de Marker Cluster -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster/dist/MarkerCluster.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster/dist/MarkerCluster.Default.css" />
+
+    <!-- hoja de estilos personalizada -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+</head>
+<body>
+    <!-- Nueva cabecera de la aplicación -->
+    <header class="app-header">
+        <div class="brand">
+            <div class="logo-dot"></div>
+            <h1>LoRaLink Dashboard</h1>
+        </div>
+        <button id="clear-alerts-btn" class="btn danger">Limpiar Todo</button>
+    </header>
+
+    <!-- Nueva maquetación con dos paneles -->
+    <main class="layout">
+        <div class="map-panel">
+            <div id="map"></div>
+        </div>
+        <div class="table-panel">
+            <div class="panel-header">
+                <h2>Reportes Activos</h2>
+            </div>
+            <div class="table-wrap">
+                <table class="grid">
+                    <thead>
+                        <tr>
+                            <th>Tipo</th>
+                            <th>Estado</th>
+                            <th>Unidad</th>
+                            <th>Hora</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <!-- El cuerpo de la tabla será llenado por JavaScript -->
+                    <tbody id="alerts-table-body">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+
+    <!-- Nuevo pop-up de asignación usando <dialog> -->
+    <dialog id="assign-unit-dialog">
+        <div class="dialog-card">
+            <h3>Asignar Unidad</h3>
+            <div class="field">
+                <label for="select-unit">Unidades disponibles</label>
+                <select id="select-unit"></select>
+            </div>
+            <div class="dialog-actions">
+                <button id="btn-cancel-assign" class="btn">Cancelar</button>
+                <button id="btn-confirm-assign" class="btn primary">Confirmar</button>
+            </div>
+        </div>
+    </dialog>
+
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet.markercluster/dist/leaflet.markercluster.js"></script>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+
+    <!-- NUEVO: Script para el plugin de Marker Cluster -->
+
+    <!-- Tu script personalizado (sin cambios) -->
+    
+</body>
+</html>
